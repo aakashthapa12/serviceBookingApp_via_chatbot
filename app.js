@@ -57,14 +57,17 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const multer = require('multer'); 
-
-const authRoutes = require('./routes/auth');
-const serviceProviderRoutes = require('./routes/serviceProvider'); 
-const clientRoutes = require('./routes/client'); 
-const chatbotRouter = require('./routes/chatbot'); //new
 const path = require('path');
-require('dotenv').config();
+const dotenv = require('dotenv');
+
+// Route imports
+const authRoutes = require('./routes/auth');
+const serviceProviderRoutes = require('./routes/serviceProvider');
+const clientRoutes = require('./routes/client');
+const chatbotRouter = require('./routes/chatbot');
+
+// Load environment variables from .env file
+dotenv.config();
 
 const app = express();
 
@@ -73,8 +76,6 @@ mongoose.Promise = global.Promise;
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
 })
 .then(() => console.log('MongoDB connected'))
 .catch(err => console.error('MongoDB connection error:', err)); // Improved error handling
@@ -87,23 +88,27 @@ if (process.env.NODE_ENV === 'development') {
     mongoose.set('debug', true);
 }
 
+// Middleware setup
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
+
+// Set view engine to EJS
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-app.use(express.static(path.join(__dirname, "public")));
+// Serve static files from the public directory
+app.use(express.static(path.join(__dirname, 'public')));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Routes
+// Define routes
 app.use('/auth', authRoutes);
-app.use('/service-provider', serviceProviderRoutes); 
-app.use('/client', clientRoutes); 
+app.use('/service-provider', serviceProviderRoutes);
+app.use('/client', clientRoutes);
 app.use('/chatbot', chatbotRouter);
 
-// Default Route
+// Default route to render the home page
 app.get('/', (req, res) => {
-    res.render('home.ejs'); // Render the login page by default
+    res.render('home.ejs');
 });
 
 // Error handling middleware
@@ -113,5 +118,6 @@ app.use((err, req, res, next) => {
     // Do not call next(err) here as it can cause the error to be sent multiple times
 });
 
+// Start the server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
