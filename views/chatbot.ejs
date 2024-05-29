@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with AI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .chat-container {
+            width: 80%;
+            max-width: 600px;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        
+        .messages {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        
+        .messages p {
+            margin: 0;
+            padding: 5px 0;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        input[type="text"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+        }
+        
+        button {
+            padding: 10px 24px;
+            border: none;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: #ffffff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .messages p {
+            margin: 0;
+            padding: 0.8px 0; /* Adjust padding here */
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <h1>Interact with our AI Chatbot</h1>
+        <div class="messages" id="messages"></div>
+        <form id="chat-form">
+            <input type="text" id="message" placeholder="Type your message here..." required>
+            <button type="submit" id="sendButton">Send</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const messageContainer = document.getElementById('messages');
+            messageContainer.innerHTML += `<p><strong>Chatbot:</strong> Welcome! How may I assist you today?</p>`;
+        });
+
+        document.getElementById('chat-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const messageInput = document.getElementById('message');
+            const message = messageInput.value;
+            messageInput.value = '';
+
+            const response = await fetch('/chatbot/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ userMessage: message })
+            });
+
+            const data = await response.json();
+            const messageContainer = document.getElementById('messages');
+            messageContainer.innerHTML += `<p><strong>You:</strong> ${message}</p>`;
+
+            // Format the chatbot response
+            const chatbotResponse = data.response.split('\n');
+            const formattedResponse = chatbotResponse.map(line => `<p><strong>Chatbot:</strong> ${line}</p>`).join('');
+            messageContainer.innerHTML += formattedResponse;
+
+            messageContainer.scrollTop = messageContainer.scrollHeight;
+        });
+    </script>
+</body>
+</html>

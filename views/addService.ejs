@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Service</title>
+    <link rel="stylesheet" href="/css/styles2.css"> 
+</head>
+<body>
+    <div class="container">
+        <div class="login-form">
+            <h1>Add Service</h1>
+            <form action="/service-provider/add-service" method="post" enctype="multipart/form-data">
+                <input type="email" name="email" placeholder="Enter your email" required><br>
+                <input type="text" name="name" placeholder="Service Name" required><br><br>
+                <textarea rows="10" cols="35" name="description" placeholder="Service Description" required></textarea><br><br>
+                <input type="number" name="price" placeholder="Service Price (in Rs)" required><br><br>
+                <input type="number" name="duration" placeholder="Duration (in minutes)" required><br><br>
+                <input type="file" name="serviceFile" accept=".pdf,.png,.jpeg,.jpg" required><br><br>
+                <button type="submit">Add Service</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

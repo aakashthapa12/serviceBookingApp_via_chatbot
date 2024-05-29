@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Client Page</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Available Services</h1>
+    <ul>
+        <% services.forEach(service => { %>
+            <li><%= service.name %> - <%= service.description %></li>
+        <% }); %>
+    </ul>
+    <hr>
+    <h2>Chat with our Assistant</h2>
+    <div id="chatbox">
+        <div id="chatlog"></div>
+        <input type="text" id="userInput" placeholder="Type your question...">
+        <button id="sendButton">Send</button>
+    </div>
+
+    <script>
+        document.getElementById('sendButton').addEventListener('click', async () => {
+            const userInput = document.getElementById('userInput').value;
+            const chatlog = document.getElementById('chatlog');
+
+            if (userInput.trim() === '') return;
+
+            // Display user's message
+            const userMessage = document.createElement('div');
+            userMessage.textContent = `You: ${userInput}`;
+            chatlog.appendChild(userMessage);
+
+            // Send message to server
+            try {
+                const response = await fetch('/chatbot/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: userInput })
+                });
+                const data = await response.json();
+
+                // Display chatbot's response
+                const botMessage = document.createElement('div');
+                botMessage.textContent = `Assistant: ${data.response}`;
+                chatlog.appendChild(botMessage);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booked Appointments</title>
+    <link rel="stylesheet" href="/css/styles5.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Your Booked Appointments</h1>
+        <ul>
+            <% if (appointments.length > 0) { %>
+                <% appointments.forEach(appointment => { %>
+                    <li class="service-item">
+                        <p><strong>Service:</strong> <%= appointment.service %></p>
+                        <p><strong>Date:</strong> <%= appointment.date %></p>
+                        <p><strong>Time:</strong> <%= appointment.time %></p>
+                        <p><strong>Name:</strong> <%= appointment.name %></p>
+                        <p><strong>Mobile:</strong> <%= appointment.mobile %></p>
+                        <p><strong>Email:</strong> <%= appointment.email %></p>
+                    </li>
+                <% }) %>
+            <% } else { %>
+                <li class="service-item">
+                    <p>No appointments found.</p>
+                </li>
+            <% } %>
+        </ul>
+    </div>
+</body>
+</html>

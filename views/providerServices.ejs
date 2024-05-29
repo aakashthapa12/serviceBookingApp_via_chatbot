@@ -1,0 +1,38 @@
+
+<link rel="stylesheet" href="/css/styles5.css"> 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Services by <%= provider.email %></title>
+</head>
+<body>
+    <div class="container">
+        <h1>List of Services of Provider - <%= provider.email %></h1>
+        <ul>
+            <% for(service of services) { %>
+                <li class="service-item">
+                    <strong>Name:</strong> <%= service.name %> <br>
+                    <strong>Provider ID:</strong> <%= service.provider_id %> <br>
+                    <strong>Description:</strong> <%= service.description %> <br>
+                    <strong>Price (Rs):</strong> <%= service.price %> <br>
+                    <strong>Duration:</strong> <%= service.duration %> minutes<br>
+                    <a href="/service-provider/view-service-file/<%= service._id %>" class="view-link">View Service File</a>
+                </li>
+                <br>
+            <% } %>
+        </ul>
+        <!-- <a href="/service-provider/service-provider-page" class="back-link">Back to Service Providers</a> -->
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

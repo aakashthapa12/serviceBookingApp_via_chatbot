@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Index</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .header {
+            margin-bottom: 30px;
+        }
+        
+        .section {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #444444;
+        }
+        
+        h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #444444;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            color: #666666;
+        }
+        
+        a, button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff7e5f, #feb47b);
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            border: none;
+            transition: background 0.3s, color 0.3s;
+            cursor: pointer;
+        }
+        
+        a:hover, button:hover {
+            background: linear-gradient(45deg, #feb47b, #ff7e5f);
+        }
+
+        input[type="email"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Services Dashboard</h1>
+        </div>
+
+        <section class="section">
+            <h2>Available Services</h2>
+            <p>Explore our available services:</p>
+            <a href="http://localhost:5000/service-provider/all-services">View Services</a>
+        </section>
+
+        <section class="section">
+            <h2>Chat with AI Chatbot for general inquiries / services</h2>
+            <p>Have questions? Interact with our AI Chatbot:</p>
+            <a href="/chatbot/chatbot">Chat with AI</a>
+        </section>
+
+        <section class="section">
+            <h2>View Your Booked Appointments</h2>
+            <p>Check your booked appointments by entering your email:</p>
+            <form action="/client/client_Appointments" method="GET">
+                <label for="email">Enter your email:</label>
+                <input type="email" id="email" name="email" required>
+                <button type="submit">View Appointments</button>
+            </form>
+        </section>
+    </div>
+</body>
+</html>

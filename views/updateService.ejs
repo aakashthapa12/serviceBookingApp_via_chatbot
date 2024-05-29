@@ -1,0 +1,21 @@
+
+<!-- scratch, needs to be build -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Service</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <h1>Update Service</h1>
+    <form action="/service-provider/update-service" method="POST">
+        <input type="hidden" name="serviceId" value="<%= service._id %>"><!-- Hidden input to hold the service ID -->
+        <input type="email" name="email" value="<%= service.email %>" placeholder="Enter your email" required><br><br>
+        <input type="text" name="name" value="<%= service.name %>" placeholder="Service Name" required><br><br>
+        <textarea rows="10" cols="35" name="description" placeholder="Service Description" required><%= service.description %></textarea><br><br>
+        <input type="number" name="price" value="<%= service.price %>" placeholder="Service Price (in Rs)" required><br><br>
+        <input type="number" name="duration" value="<%= service.duration %>" placeholder="Duration (in minutes)" required><br><br>
+        <button type="submit">Update Service</button>
+    </form>
+</body>
+</html>

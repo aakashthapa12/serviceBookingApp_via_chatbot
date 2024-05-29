@@ -1,0 +1,162 @@
+/* public/css/styles.css
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    margin-top: 50px;
+}
+h1 {
+    color: #333;
+}
+.btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.btn-container > div {
+    margin: 0 20px;
+}
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+button:hover {
+    background-color: #0056b3;
+} */
+
+
+
+
+/* body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    margin-top: 50px;
+    padding: 0 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.btn-container > div {
+    margin: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+} */
+
+/* Media Queries */
+/* @media (max-width: 768px) {
+    body {
+        margin-top: 30px;
+    }
+    h1 {
+        font-size: 28px;
+    }
+    button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        margin-top: 20px;
+    }
+    h1 {
+        font-size: 24px;
+    }
+    button {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+} */
+
+
+
+
+body {
+    background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+    font-family: 'Arial', sans-serif;
+    color: #333333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: linear-gradient(45deg, #ff7e5f, #feb47b);
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 800px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 50px; /* Add margin from all four sides */
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #ffffff; /* Change font color to white */
+}
+
+input[type="email"],
+input[type="text"],
+textarea,
+input[type="number"],
+input[type="file"],
+button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #ffffff; /* Change button background color to white */
+    color: #007bff; /* Change button text color to blue */
+    border: 1px solid #007bff; /* Change button border color to blue */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+button:hover {
+    background-color: #007bff; /* Change button background color to blue on hover */
+    color: #ffffff; /* Change button text color to white on hover */
+}
+
+button:focus {
+    outline: none; /* Remove button outline on focus */
+}
+
